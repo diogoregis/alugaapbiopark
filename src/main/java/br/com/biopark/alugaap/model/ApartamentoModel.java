@@ -13,10 +13,10 @@ public class ApartamentoModel {
     private Long id;
 
     @ManyToOne
-    private EdificioModel idEdificio;
+    private EdificioModel edificio;
 
     @ManyToOne
-    private LocadorModel idLocador;
+    private LocadorModel locador;
 
     private Boolean apartamentoDisponivel;
 
