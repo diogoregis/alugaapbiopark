@@ -5,6 +5,7 @@ import br.com.biopark.alugaap.repository.AluguelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,6 +38,9 @@ public class AluguelServiceImpl implements AluguelService {
     @Override
     public void deleteById(Long id) {
         //aluguelRepository.deleteById(id);
-        aluguelRepository.findById(id).get().setContratoAtivo(false);
+        AluguelModel aluguel = aluguelRepository.findById(id).get();
+        aluguel.setContratoAtivo(false);
+        aluguel.setDataEncerramentoContrato(LocalDate.now());
+        aluguelRepository.save(aluguel);
     }
 }
