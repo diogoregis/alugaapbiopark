@@ -18,6 +18,6 @@ public class ApartamentoModel {
     @ManyToOne
     private LocadorModel locador;
 
-    private Boolean apartamentoDisponivel;
+    private Boolean apartamentoDisponivel = true;
 
 }
