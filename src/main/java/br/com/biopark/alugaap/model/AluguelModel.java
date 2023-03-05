@@ -28,4 +28,6 @@ public class AluguelModel {
     private Double valorAluguel;
     private Boolean contratoAtivo = true;
 
+
+
 }
