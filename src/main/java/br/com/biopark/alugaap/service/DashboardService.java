@@ -11,20 +11,20 @@ public interface DashboardService {
 
     List<ApartamentoModel> apartamentosDisponiveisAll();
 
-    List<ApartamentoModel> apartamentosDisponiveisEdificio(EdificioModel edificio);
+    List<ApartamentoModel> apartamentosDisponiveisEdificio(Long id);
 
     List<ApartamentoModel> apartamentosOcupadosAll();
 
-    List<ApartamentoModel> apartamentosOcupadosEdificio(EdificioModel edificio);
+    List<ApartamentoModel> apartamentosOcupadosEdificio(Long id);
 
-    List<ApartamentoModel> apartamentoContratoAtivoPorLocatario(LocadorModel locatario);
+    List<ApartamentoModel> apartamentoContratoAtivoPorLocatario(Long id);
 
-    LocatarioModel retornarLocatarioApartamento(ApartamentoModel apartamento);
+    LocatarioModel retornarLocatarioApartamento(Long id);
 
     Integer contratosAtivosAll();
 
-    Integer contratosAtivoPorEdificio(EdificioModel edificio);
+    Integer contratosAtivoPorEdificio(Long id);
 
-    Integer contratosAtivosPorLocatario(LocatarioModel locatario);
+    Integer contratosAtivosPorLocatario(Long id);
 
 }

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,15 +27,24 @@ public class DashboardController {
     @GetMapping()
     public ResponseEntity<List<ApartamentoModel>> apartamentosDisponiveisAll(){
         return ResponseEntity.status(HttpStatus.OK).body(dashboard.apartamentosDisponiveisAll());
-    };
+    }
 
-    /*List<ApartamentoModel> apartamentosDisponiveisEdificio(EdificioModel edificio);
+    @GetMapping("/{id}")
+    public ResponseEntity<List<ApartamentoModel>> apartamentosDisponiveisEdificio(@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(dashboard.apartamentosDisponiveisEdificio(id));
+    }
 
-    List<ApartamentoModel> apartamentosOcupadosAll();
+    @GetMapping("/ocupados")
+    public ResponseEntity<List<ApartamentoModel>> apartamentosOcupadosAll(){
+        return ResponseEntity.status(HttpStatus.OK).body(dashboard.apartamentosOcupadosAll());
+    }
 
-    List<ApartamentoModel> apartamentosOcupadosEdificio(EdificioModel edificio);
+    @GetMapping("/ocupados/{id}")
+    public ResponseEntity<List<ApartamentoModel>> apartamentosOcupadosEdificio(@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(dashboard.apartamentosOcupadosEdificio(id));
+    }
 
-    List<ApartamentoModel> apartamentoContratoAtivoPorLocatario(LocadorModel locatario);
+    /*List<ApartamentoModel> apartamentoContratoAtivoPorLocatario(LocadorModel locatario);
 
     LocatarioModel retornarLocatarioApartamento(ApartamentoModel apartamento);
 

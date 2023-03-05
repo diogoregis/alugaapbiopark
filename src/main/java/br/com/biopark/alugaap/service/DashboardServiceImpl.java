@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class DashboardServiceImpl implements DashboardService{
@@ -39,27 +40,50 @@ public class DashboardServiceImpl implements DashboardService{
     }
 
     @Override
-    public List<ApartamentoModel> apartamentosDisponiveisEdificio(EdificioModel edificio) {
-        return null;
+    public List<ApartamentoModel> apartamentosDisponiveisEdificio(Long id) {
+        List<ApartamentoModel> listaApartamentos = new ArrayList<ApartamentoModel>();
+        List<ApartamentoModel> todosApartamentos = apartamentoService.findAll();
+        for (ApartamentoModel apartamento: todosApartamentos) {
+            if(apartamento.getApartamentoDisponivel() && Objects.equals(apartamento.getEdificio().getId(), id)){
+                listaApartamentos.add(apartamento);
+            }
+        }
+        return listaApartamentos;
     }
 
     @Override
     public List<ApartamentoModel> apartamentosOcupadosAll() {
+        List<ApartamentoModel> listaApartamentos = new ArrayList<ApartamentoModel>();
+        List<ApartamentoModel> todosApartamentos = apartamentoService.findAll();
+        for (ApartamentoModel apartamento: todosApartamentos) {
+            if(!apartamento.getApartamentoDisponivel()){
+                listaApartamentos.add(apartamento);
+            }
+        }
+        return listaApartamentos;
+    }
+
+    @Override
+    public List<ApartamentoModel> apartamentosOcupadosEdificio(Long id) {
+        List<ApartamentoModel> listaApartamentos = new ArrayList<ApartamentoModel>();
+        List<ApartamentoModel> todosApartamentos = apartamentoService.findAll();
+        for (ApartamentoModel apartamento: todosApartamentos) {
+            if(Objects.equals(apartamento.getEdificio().getId(), id)) {
+                if (!apartamento.getApartamentoDisponivel()) {
+                    listaApartamentos.add(apartamento);
+                }
+            }
+        }
+        return listaApartamentos;
+    }
+
+    @Override
+    public List<ApartamentoModel> apartamentoContratoAtivoPorLocatario(Long id) {
         return null;
     }
 
     @Override
-    public List<ApartamentoModel> apartamentosOcupadosEdificio(EdificioModel edificio) {
-        return null;
-    }
-
-    @Override
-    public List<ApartamentoModel> apartamentoContratoAtivoPorLocatario(LocadorModel locatario) {
-        return null;
-    }
-
-    @Override
-    public LocatarioModel retornarLocatarioApartamento(ApartamentoModel apartamento) {
+    public LocatarioModel retornarLocatarioApartamento(Long id) {
         return null;
     }
 
@@ -69,12 +93,12 @@ public class DashboardServiceImpl implements DashboardService{
     }
 
     @Override
-    public Integer contratosAtivoPorEdificio(EdificioModel edificio) {
+    public Integer contratosAtivoPorEdificio(Long id) {
         return null;
     }
 
     @Override
-    public Integer contratosAtivosPorLocatario(LocatarioModel locatario) {
+    public Integer contratosAtivosPorLocatario(Long id) {
         return null;
     }
 }
