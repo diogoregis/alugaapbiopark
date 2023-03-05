@@ -37,7 +37,6 @@ public class AluguelServiceImpl implements AluguelService {
 
     @Override
     public void deleteById(Long id) {
-        //aluguelRepository.deleteById(id);
         AluguelModel aluguel = aluguelRepository.findById(id).get();
         aluguel.setContratoAtivo(false);
         aluguel.setDataEncerramentoContrato(LocalDate.now());
