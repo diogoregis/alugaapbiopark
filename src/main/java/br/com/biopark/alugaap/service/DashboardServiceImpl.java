@@ -25,12 +25,12 @@ public class DashboardServiceImpl implements DashboardService{
     }
 
     @Autowired
-    private ApartamentoService apartamentoService;
+    private ApartamentoRepository apartamentoRepository;
 
     @Override
     public List<ApartamentoModel> apartamentosDisponiveisAll() {
         List<ApartamentoModel> listaApartamentos = new ArrayList<ApartamentoModel>();
-        List<ApartamentoModel> todosApartamentos = apartamentoService.findAll();
+        List<ApartamentoModel> todosApartamentos = apartamentoRepository.findAll();
         for (ApartamentoModel apartamento: todosApartamentos) {
             if(apartamento.getApartamentoDisponivel()){
                 listaApartamentos.add(apartamento);
@@ -42,7 +42,7 @@ public class DashboardServiceImpl implements DashboardService{
     @Override
     public List<ApartamentoModel> apartamentosDisponiveisEdificio(Long id) {
         List<ApartamentoModel> listaApartamentos = new ArrayList<ApartamentoModel>();
-        List<ApartamentoModel> todosApartamentos = apartamentoService.findAll();
+        List<ApartamentoModel> todosApartamentos = apartamentoRepository.findAll();
         for (ApartamentoModel apartamento: todosApartamentos) {
             if(apartamento.getApartamentoDisponivel() && Objects.equals(apartamento.getEdificio().getId(), id)){
                 listaApartamentos.add(apartamento);
@@ -54,7 +54,7 @@ public class DashboardServiceImpl implements DashboardService{
     @Override
     public List<ApartamentoModel> apartamentosOcupadosAll() {
         List<ApartamentoModel> listaApartamentos = new ArrayList<ApartamentoModel>();
-        List<ApartamentoModel> todosApartamentos = apartamentoService.findAll();
+        List<ApartamentoModel> todosApartamentos = apartamentoRepository.findAll();
         for (ApartamentoModel apartamento: todosApartamentos) {
             if(!apartamento.getApartamentoDisponivel()){
                 listaApartamentos.add(apartamento);
@@ -66,7 +66,7 @@ public class DashboardServiceImpl implements DashboardService{
     @Override
     public List<ApartamentoModel> apartamentosOcupadosEdificio(Long id) {
         List<ApartamentoModel> listaApartamentos = new ArrayList<ApartamentoModel>();
-        List<ApartamentoModel> todosApartamentos = apartamentoService.findAll();
+        List<ApartamentoModel> todosApartamentos = apartamentoRepository.findAll();
         for (ApartamentoModel apartamento: todosApartamentos) {
             if(Objects.equals(apartamento.getEdificio().getId(), id)) {
                 if (!apartamento.getApartamentoDisponivel()) {

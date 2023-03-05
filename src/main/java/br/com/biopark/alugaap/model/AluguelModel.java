@@ -15,9 +15,6 @@ public class AluguelModel {
     private Long id;
 
     @ManyToOne
-    private EdificioModel edificio;
-
-    @ManyToOne
     private ApartamentoModel apartamento;
 
     @ManyToOne
