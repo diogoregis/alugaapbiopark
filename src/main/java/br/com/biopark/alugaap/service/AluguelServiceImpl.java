@@ -3,10 +3,12 @@ package br.com.biopark.alugaap.service;
 import br.com.biopark.alugaap.model.AluguelModel;
 import br.com.biopark.alugaap.repository.AluguelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class AluguelServiceImpl implements AluguelService {
 
     @Autowired
