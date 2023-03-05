@@ -10,7 +10,8 @@ import java.time.LocalDate;
 public class AluguelModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="aluguel_sequence")
+    @SequenceGenerator(name="aluguel_sequence", sequenceName="alu_seq")
     private Long id;
 
     @ManyToOne
@@ -25,6 +26,6 @@ public class AluguelModel {
     private LocalDate dataInicioContrato = LocalDate.now();
     private LocalDate dataEncerramentoContrato;
     private Double valorAluguel;
-    private Boolean contratoAtivo;
+    private Boolean contratoAtivo = true;
 
 }
