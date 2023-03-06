@@ -1,9 +1,6 @@
 package br.com.biopark.alugaap.controller;
 
-import br.com.biopark.alugaap.model.ApartamentoModel;
-import br.com.biopark.alugaap.model.EdificioModel;
-import br.com.biopark.alugaap.model.LocadorModel;
-import br.com.biopark.alugaap.model.LocatarioModel;
+import br.com.biopark.alugaap.model.*;
 import br.com.biopark.alugaap.service.DashboardService;
 import br.com.biopark.alugaap.service.DashboardServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,11 +41,17 @@ public class DashboardController {
         return ResponseEntity.status(HttpStatus.OK).body(dashboard.apartamentosOcupadosEdificio(id));
     }
 
-    /*List<ApartamentoModel> apartamentoContratoAtivoPorLocatario(LocadorModel locatario);
+    @GetMapping("/ocupados/locatario")
+    public ResponseEntity<List<AluguelModel>> contratosAtivsoPorLocatario(@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(dashboard.contratosAtivsoPorLocatario(id));
+    }
 
-    LocatarioModel retornarLocatarioApartamento(ApartamentoModel apartamento);
+    @GetMapping("/ocupados/locatario/{id}")
+    public ResponseEntity<LocatarioModel> retornarLocatarioApartamento(@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(dashboard.retornarLocatarioApartamento(id));
+    }
 
-    Integer contratosAtivosAll();
+    /*Integer contratosAtivosAll();
 
     Integer contratosAtivoPorEdificio(EdificioModel edificio);
 

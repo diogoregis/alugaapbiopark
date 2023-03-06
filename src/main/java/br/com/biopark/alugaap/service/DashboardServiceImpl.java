@@ -1,10 +1,8 @@
 package br.com.biopark.alugaap.service;
 
 import br.com.biopark.alugaap.controller.ApartamentoController;
-import br.com.biopark.alugaap.model.ApartamentoModel;
-import br.com.biopark.alugaap.model.EdificioModel;
-import br.com.biopark.alugaap.model.LocadorModel;
-import br.com.biopark.alugaap.model.LocatarioModel;
+import br.com.biopark.alugaap.model.*;
+import br.com.biopark.alugaap.repository.AluguelRepository;
 import br.com.biopark.alugaap.repository.ApartamentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +24,9 @@ public class DashboardServiceImpl implements DashboardService{
 
     @Autowired
     private ApartamentoRepository apartamentoRepository;
+
+    @Autowired
+    private AluguelRepository aluguelRepository;
 
     @Override
     public List<ApartamentoModel> apartamentosDisponiveisAll() {
@@ -78,13 +79,35 @@ public class DashboardServiceImpl implements DashboardService{
     }
 
     @Override
-    public List<ApartamentoModel> apartamentoContratoAtivoPorLocatario(Long id) {
-        return null;
+    public List<AluguelModel> contratosAtivsoPorLocatario(Long id) {
+        List<AluguelModel> contratosLocatarios = new ArrayList<AluguelModel>();
+        if(aluguelRepository.findAll() == null || aluguelRepository.findAll().isEmpty()){
+            return null;
+        }
+        List<AluguelModel> listaAluguel = aluguelRepository.findAll();
+        for(AluguelModel aluguel : listaAluguel){
+            if(aluguel.getContratoAtivo()){
+                if(Objects.equals(aluguel.getLocatario().getId(), id)){
+                    contratosLocatarios.add(aluguel);
+                }
+            }
+        }
+        return contratosLocatarios;
     }
 
     @Override
     public LocatarioModel retornarLocatarioApartamento(Long id) {
-        return null;
+        LocatarioModel locatario = null;
+        if(aluguelRepository.findAll().isEmpty() || aluguelRepository.findAll() == null){
+            return null;
+        }
+        List<AluguelModel> listaAluguel = aluguelRepository.findAll();
+        for(AluguelModel aluguel : listaAluguel){
+            if(Objects.equals(aluguel.getApartamento().getId(), id)){
+                locatario = aluguel.getLocatario();
+            }
+        }
+        return locatario;
     }
 
     @Override
