@@ -51,9 +51,12 @@ public class DashboardController {
         return ResponseEntity.status(HttpStatus.OK).body(dashboard.retornarLocatarioApartamento(id));
     }
 
-    /*Integer contratosAtivosAll();
+    @GetMapping("/contratos")
+    public ResponseEntity<ContratoModel> contratosAtivosAll(){
+        return ResponseEntity.status(HttpStatus.OK).body(dashboard.contratosAtivosAll());
+    }
 
-    Integer contratosAtivoPorEdificio(EdificioModel edificio);
+    /*Integer contratosAtivoPorEdificio(EdificioModel edificio);
 
     Integer contratosAtivosPorLocatario(LocatarioModel locatario);*/
 

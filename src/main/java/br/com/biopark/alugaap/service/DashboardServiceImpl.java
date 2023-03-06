@@ -111,17 +111,34 @@ public class DashboardServiceImpl implements DashboardService{
     }
 
     @Override
-    public Integer contratosAtivosAll() {
+    public ContratoModel contratosAtivosAll() {
+        ContratoModel contratos = new ContratoModel();
+        if(aluguelRepository.findAll() == null || aluguelRepository.findAll().isEmpty()){
+            return null;
+        }
+        int quantidade = 0;
+        double valorTotal = 0.0;
+        List<AluguelModel> listaAluguel = aluguelRepository.findAll();
+
+        for(AluguelModel aluguel : listaAluguel){
+            if(aluguel.getContratoAtivo()){
+                quantidade++;
+                valorTotal += aluguel.getValorAluguel();
+            }
+        }
+        contratos.setValorTotalContratos(valorTotal);
+        contratos.setQuantidadeTotalContratos(quantidade);
+
+        return contratos;
+    }
+
+    @Override
+    public List<ContratoModel> contratosAtivoPorEdificio(Long id) {
         return null;
     }
 
     @Override
-    public Integer contratosAtivoPorEdificio(Long id) {
-        return null;
-    }
-
-    @Override
-    public Integer contratosAtivosPorLocatario(Long id) {
+    public List<ContratoModel> contratosAtivosPorLocatario(Long id) {
         return null;
     }
 }

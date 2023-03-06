@@ -18,10 +18,10 @@ public interface DashboardService {
 
     LocatarioModel retornarLocatarioApartamento(Long id);
 
-    Integer contratosAtivosAll();
+    ContratoModel contratosAtivosAll();
 
-    Integer contratosAtivoPorEdificio(Long id);
+    List<ContratoModel> contratosAtivoPorEdificio(Long id);
 
-    Integer contratosAtivosPorLocatario(Long id);
+    List<ContratoModel> contratosAtivosPorLocatario(Long id);
 
 }
