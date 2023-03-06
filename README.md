@@ -42,9 +42,14 @@ git clone https://github.com/diogoregis/alugaapbiopark.git
 
 
 
+* Crie um banco de dados com o nome: alugaapbiopark
+* Execute o script que se encontra na pasta do projeto
+* pasta do projeto > Resources > Static > alugaap.sql
+
 * Abra o IntelliJ IDEA, vá até FILE > OPEN
 * Escolha a pasta do clone
 * A IDE vai reconhecer o arquivo pom e vai index e baixar as dependência, aguarde concluir
+* Vá até o pgAdmin
 * Rode o projeto no Run
 * Abra seu navegador e acesso endereço localhost:9009
 
