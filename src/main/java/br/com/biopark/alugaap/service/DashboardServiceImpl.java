@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 public class DashboardServiceImpl implements DashboardService{
@@ -79,19 +80,20 @@ public class DashboardServiceImpl implements DashboardService{
     }
 
     @Override
-    public List<AluguelModel> contratosAtivsoPorLocatario(Long id) {
-        List<AluguelModel> contratosLocatarios = new ArrayList<AluguelModel>();
+    public List<LocatarioModel> contratosAtivsoPorLocatario() {
         if(aluguelRepository.findAll() == null || aluguelRepository.findAll().isEmpty()){
             return null;
         }
+        List<LocatarioModel> listaLoca = new ArrayList<>();
         List<AluguelModel> listaAluguel = aluguelRepository.findAll();
-        for(AluguelModel aluguel : listaAluguel){
-            if(aluguel.getContratoAtivo()){
-                if(Objects.equals(aluguel.getLocatario().getId(), id)){
-                    contratosLocatarios.add(aluguel);
-                }
+        for(AluguelModel aluguelModel : listaAluguel){
+            if(aluguelModel.getContratoAtivo()){
+                listaLoca.add(aluguelModel.getLocatario());
             }
         }
+        List<LocatarioModel> contratosLocatarios = listaLoca.stream()
+                .distinct()
+                .collect(Collectors.toList());
         return contratosLocatarios;
     }
 

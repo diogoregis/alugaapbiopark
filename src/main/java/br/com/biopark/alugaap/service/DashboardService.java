@@ -14,7 +14,7 @@ public interface DashboardService {
 
     List<ApartamentoModel> apartamentosOcupadosEdificio(Long id);
 
-    List<AluguelModel> contratosAtivsoPorLocatario(Long id);
+    List<LocatarioModel> contratosAtivsoPorLocatario();
 
     LocatarioModel retornarLocatarioApartamento(Long id);
 
