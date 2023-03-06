@@ -43,8 +43,9 @@ git clone https://github.com/diogoregis/alugaapbiopark.git
 
 
 * Crie um banco de dados com o nome: alugaapbiopark
-* Execute o script que se encontra na pasta do projeto
-* pasta do projeto > Resources > Static > alugaap.sql
+* De maneira opcional pode executar o script que se encontra na pasta do projeto
+* De maneira opcional pode ir na pasta do projeto > Resources > Static > alugaap.sql
+* caso opte por não executar todas as tabelas serão criadas pela aplicação, porem sem dados
 
 * Abra o IntelliJ IDEA, vá até FILE > OPEN
 * Escolha a pasta do clone
