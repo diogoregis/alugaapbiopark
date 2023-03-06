@@ -111,7 +111,7 @@ public class DashboardServiceImpl implements DashboardService{
     }
 
     @Override
-    public ContratoModel contratosAtivosAll() {
+    public ContratoModel valorTotalDeContratosAtivosAll() {
         ContratoModel contratos = new ContratoModel();
         if(aluguelRepository.findAll() == null || aluguelRepository.findAll().isEmpty()){
             return null;
@@ -133,12 +133,50 @@ public class DashboardServiceImpl implements DashboardService{
     }
 
     @Override
-    public List<ContratoModel> contratosAtivoPorEdificio(Long id) {
-        return null;
+    public ContratoModel valorTotalDeContratosAtivosPorEdificio(Long id) {
+        ContratoModel contrato = new ContratoModel();
+        if(aluguelRepository.findAll() == null || aluguelRepository.findAll().isEmpty()){
+            return null;
+        }
+        int quantidade = 0;
+        double valorTotal = 0.0;
+        List<AluguelModel> listaAluguel = aluguelRepository.findAll();
+
+        for(AluguelModel aluguel : listaAluguel){
+            if(aluguel.getContratoAtivo()){
+                if(Objects.equals(aluguel.getApartamento().getEdificio().getId(), id)){
+                    quantidade++;
+                    valorTotal += aluguel.getValorAluguel();
+                }
+            }
+        }
+        contrato.setValorTotalContratos(valorTotal);
+        contrato.setQuantidadeTotalContratos(quantidade);
+
+        return contrato;
     }
 
     @Override
-    public List<ContratoModel> contratosAtivosPorLocatario(Long id) {
-        return null;
+    public ContratoModel valorTotalDeContratosAtivosPorLocatario(Long id) {
+        ContratoModel contrato = new ContratoModel();
+        if(aluguelRepository.findAll() == null || aluguelRepository.findAll().isEmpty()){
+            return null;
+        }
+        int quantidade = 0;
+        double valorTotal = 0.0;
+        List<AluguelModel> listaAluguel = aluguelRepository.findAll();
+
+        for(AluguelModel aluguel : listaAluguel){
+            if(aluguel.getContratoAtivo()){
+                if(Objects.equals(aluguel.getLocatario().getId(), id)){
+                    quantidade++;
+                    valorTotal += aluguel.getValorAluguel();
+                }
+            }
+        }
+        contrato.setValorTotalContratos(valorTotal);
+        contrato.setQuantidadeTotalContratos(quantidade);
+
+        return contrato;
     }
 }

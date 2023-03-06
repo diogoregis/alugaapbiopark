@@ -53,12 +53,18 @@ public class DashboardController {
 
     @GetMapping("/contratos")
     public ResponseEntity<ContratoModel> contratosAtivosAll(){
-        return ResponseEntity.status(HttpStatus.OK).body(dashboard.contratosAtivosAll());
+        return ResponseEntity.status(HttpStatus.OK).body(dashboard.valorTotalDeContratosAtivosAll());
     }
 
-    /*Integer contratosAtivoPorEdificio(EdificioModel edificio);
+    @GetMapping("/contratos/edificio/{id}")
+    public ResponseEntity<ContratoModel> contratosAtivoPorEdificio(@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(dashboard.valorTotalDeContratosAtivosPorEdificio(id));
+    }
 
-    Integer contratosAtivosPorLocatario(LocatarioModel locatario);*/
+    @GetMapping("/contratos/locatario/{id}")
+    public ResponseEntity<ContratoModel> contratosAtivosPorLocatario(@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(dashboard.valorTotalDeContratosAtivosPorLocatario(id));
+    }
 
 
 }
