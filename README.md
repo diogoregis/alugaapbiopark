@@ -54,6 +54,24 @@ http://localhost:9009/
 
 Uma maneira alternativa é entrar na pasta do projeto, RESOURCES > TEMPLATE e abrir o arquivo index.html
 
+#### DADOS PARA O BANCO
+
+* Banco de dados PostegreSQL
+* Nome do banco: alugaapbiopark
+* usuário, senha e porta padrões do postgreSQL
+* usuario: postgres
+* senha: postgres
+* porta: 5432
+
+Qualquer dificuldade na conexão alterar os dados no arquivo application.properties
+
+```
+# DB PostgreSQL
+spring.datasource.url = jdbc:postgresql://localhost:5432/alugaapbiopark
+spring.datasource.username=postgres
+spring.datasource.password=postgres
+```
+
 
 
 ## API
