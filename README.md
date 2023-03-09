@@ -16,8 +16,8 @@ Nesse projeto será possivel ver:
 
 ## UTILIZADO NO PROJETO
 
-* Java 11
-* Spring Boot 2.7.9
+* Java 17
+* Spring Boot 3.0.4
 * PostgreSQL 12
 * Maven 4.0.0
 * IntelliJ IDEA 2022.2.1
