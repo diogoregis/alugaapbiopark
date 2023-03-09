@@ -2,7 +2,7 @@ package br.com.biopark.alugaap.model;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Data
 @Entity

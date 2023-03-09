@@ -1,3 +1,70 @@
+
 body {
     padding: 70px;
   }
+
+header {
+    width: 100%;
+    background: white;
+    top: 0;
+    left: 0;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.divtopo{
+    height: 50px;
+}
+
+#divDash{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+    background:rgb(230, 230, 230);
+}
+
+#divDash ul {
+    height: 320px;
+    width: 220px;
+    background:white;
+    border-radius: 18px;
+    margin: 0px 40px;
+}
+
+
+#divDash ul li img {
+    height: 200px;
+    width: 220px;
+    margin-bottom: 12px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+#divDash ul li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 14px;
+    background: black;
+}
+
+footer div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+

@@ -1,0 +1,33 @@
+package br.com.biopark.alugaap.controller;
+
+
+import br.com.biopark.alugaap.service.DashboardService;
+import br.com.biopark.alugaap.service.EdificioService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequiredArgsConstructor
+public class HomeController {
+
+    @Autowired
+    private DashboardService dashboard;
+    @Autowired
+    private EdificioService edificioService;
+
+    @RequestMapping("/")
+    public String index(Model model){
+        model.addAttribute("dash", dashboard.apartamentosDisponiveisAll());
+        return "index";
+    }
+
+    @RequestMapping("/edificios/")
+    public String edificios(Model model){
+        model.addAttribute("edificios", edificioService.findAll());
+        return "edificios";
+    }
+
+}

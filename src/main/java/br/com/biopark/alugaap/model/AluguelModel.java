@@ -1,8 +1,8 @@
 package br.com.biopark.alugaap.model;
 
+import jakarta.persistence.*;
 import lombok.Data;
 
-import javax.persistence.*;
 import java.time.LocalDate;
 
 @Data
