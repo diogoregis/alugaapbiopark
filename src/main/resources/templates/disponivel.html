@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALUGA AP - BIO PARK</title>
+    <title>APARTAMENTO DISPONIVEIS - ALUGA AP</title>
     <link rel="stylesheet" type="text/css" href="asserts/index.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -17,16 +17,16 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" id="btnEdificio" href="edificios/">Edificio</a>
+                        <a class="nav-link" id="btnEdificio" href="../edificios/">Edificio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="btnLocatario" href="locatario/">Locatario</a>
+                        <a class="nav-link" id="btnLocatario" href="../locatario/">Locatario</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="btnAluguel" href="aluguel/">Aluguel</a>
+                        <a class="nav-link" id="btnAluguel" href="../aluguel/">Aluguel</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="btnDisponivel" href="disponivel/">Apt Disponivel</a>
+                        <a class="nav-link" id="btnDisponivel" href="../disponivel/">Apt Disponivel</a>
                     </li>
                 </ul>
             </div>
@@ -37,18 +37,16 @@
     <div><p></p></div>
 
 <div class="container">
-
-    <div class="card" style="width: 18rem;" th:each="ind : ${dash}">
-        <img class="card-img-top" src="img/biopark.png" alt="Logo BioPark">
-        <div class="card-body">
-          <h5 class="card-title">VISÃO DOS CONTRATOS</h5>
-          <p class="card-text" th:text="'Contratos Ativos: ' + ${ind.quantidadeTotalContratos}"></p>
-          <p class="card-text" th:text="'Valor Total: R$ ' + ${#numbers.formatDecimal(ind.valorTotalContratos, 0, 'POINT', 2, 'COMMA')}"></p>
-        </div>
-      </div>
-
-
-    </div>
+    <div th:case="*" id="divDash" th:switch="${#lists.size(disponiveis)}">
+    <ul th:each="apart : ${disponiveis}">
+        <li>
+            <span th:text="'Apartamento: ' + ${apart.id}"></span>
+            <span th:text="' | Edf: ' + ${apart.edificio.descricaoEdificio}"></span>
+            <span th:if="${apart.apartamentoDisponivel}" th:text="' | DISPONIVEL'"></span>
+            <span th:if="${!apart.apartamentoDisponivel}" th:text="' | OCUPADO'"></span>
+        </li>
+    </ul>
+</div></div>
     
     
     <footer class="footer">

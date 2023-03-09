@@ -1,8 +1,7 @@
 package br.com.biopark.alugaap.controller;
 
 
-import br.com.biopark.alugaap.service.DashboardService;
-import br.com.biopark.alugaap.service.EdificioService;
+import br.com.biopark.alugaap.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,9 +17,17 @@ public class HomeController {
     @Autowired
     private EdificioService edificioService;
 
+    @Autowired
+    private AluguelService aluguelService;
+    @Autowired
+    private LocatarioService locatarioService;
+
+    @Autowired
+    private ApartamentoService apartamentoService;
+
     @RequestMapping("/")
     public String index(Model model){
-        model.addAttribute("dash", dashboard.apartamentosDisponiveisAll());
+        model.addAttribute("dash", dashboard.valorTotalDeContratosAtivosAll());
         return "index";
     }
 
@@ -28,6 +35,24 @@ public class HomeController {
     public String edificios(Model model){
         model.addAttribute("edificios", edificioService.findAll());
         return "edificios";
+    }
+
+    @RequestMapping("/locatario/")
+    public String locatarios(Model model){
+        model.addAttribute("locatarios", locatarioService.findAll());
+        return "locatario";
+    }
+
+    @RequestMapping("/aluguel/")
+    public String alugueis(Model model){
+        model.addAttribute("alugueis", aluguelService.findAll());
+        return "aluguel";
+    }
+
+    @RequestMapping("/disponivel/")
+    public String disponivel(Model model){
+        model.addAttribute("disponiveis", apartamentoService.findAll());
+        return "disponivel";
     }
 
 }

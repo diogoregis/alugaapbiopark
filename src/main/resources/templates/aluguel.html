@@ -17,13 +17,16 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" id="btnEdificio" href="edificios/">Edificio</a>
+                        <a class="nav-link" id="btnEdificio" href="../edificios/">Edificio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="btnLocatario" href="locatario/">Locatario</a>
+                        <a class="nav-link" id="btnLocatario" href="../locatario/">Locatario</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="btnAluguel" href="aluguel/">Aluguel</a>
+                        <a class="nav-link" id="btnAluguel" href="../aluguel/">Aluguel</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="btnDisponivel" href="../disponivel/">Apt Disponivel</a>
                     </li>
                 </ul>
             </div>
@@ -31,12 +34,18 @@
         </header>
     </div>
 
+    <div><p></p></div>
 
 <div class="container">
-    <div th:case="*" id="divDash" th:switch="${#lists.size(dash)}">
-    <ul th:each="apart : ${dash}">
+    <div th:case="*" id="divDash" th:switch="${#lists.size(alugueis)}">
+    <ul th:each="contrato : ${alugueis}">
         <li>
-            <span th:text="${apart.id}"></span>
+            <span th:text="'Contrato: ' + ${contrato.id}"></span>
+            <span th:text="' | Edificio: ' + ${contrato.apartamento.edificio.descricaoEdificio}"></span>
+            <span th:text="' | Apartamento: ' + ${contrato.apartamento.id}"></span>
+            <span th:text="' | Locatario: ' + ${contrato.locatario.nomeLocatario}"></span>
+            <span th:text="' | Valor: R$ ' + ${#numbers.formatDecimal(contrato.valorAluguel, 0, 'POINT', 2, 'COMMA')}"></span>
+            <span th:text="' | Inicio: ' + ${#temporals.format(contrato.dataInicioContrato, 'dd/MM/yyyy')}"></span>
         </li>
     </ul>
 </div></div>
