@@ -43,9 +43,9 @@ git clone https://github.com/diogoregis/alugaapbiopark.git
 
 
 * Crie um banco de dados com o nome: alugaapbiopark
-* De maneira opcional pode executar o script que se encontra na pasta do projeto
-* De maneira opcional pode ir na pasta do projeto > Resources > Static > alugaap.sql
-* caso opte por não executar todas as tabelas serão criadas pela aplicação, porem sem dados
+* Executar o script que se encontra na pasta do projeto
+* Local do script pasta do projeto > Resources > Static > alugaap.sql
+* caso opte por não executar o script todas as tabelas serão criadas pela aplicação, porem sem dados populados
 
 * Abra o IntelliJ IDEA, vá até FILE > OPEN
 * Escolha a pasta do clone
@@ -78,7 +78,7 @@ spring.datasource.username=postgres
 spring.datasource.password=postgres
 ```
 
-
+* Caso não rode o script, todas as tabelas serão criadas de maneira automáticas, porém sem dados populados.
 
 ## API
 
